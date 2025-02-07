@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    background-color: azure;
+}
+.header{
+    background-color: beige;
+}
+li{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+}
+a{
+    text-decoration: none;
+    text-emphasis: none;
+    color: black;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.nav{
+height: 8dvh;
+width:  100vw;
+}
+
+
+
+@media only screen and (max-width: 500px)  {
+    body {
+        background-color: rgb(145, 215, 238);
+    }
+    .menuHamb{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .menu{
+        display: none;
+    }
+    .imgHamb{
+        height: 7vh;
+    }
+
+}
