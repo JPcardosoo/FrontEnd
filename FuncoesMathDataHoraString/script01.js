@@ -4,10 +4,13 @@ console.log(agora);
 console.log(agora.toLocaleDateString);
 
 // Funções GET (Pegar informações)
+console.log(agora.getFullYear);
 
 // Funções SET (Informações)
+agora.setFullYear(2050);
 
 // Funções TO (Imprimir) - Formato de Texto
+console.log(agora.getFullYear());
 
 // Manipulação de Datas
 let data1 = new Date();
