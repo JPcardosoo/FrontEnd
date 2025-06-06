@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class VagaService {
   //atributos -> localhost
-  private apiUrl = "http://localhost:3007/vagas"; //caminho para o arquivo JSON
-  
+  private apiUrl = "http://localhost:3005/vagas"; //caminho para o arquivo JSON
+
   constructor(private http: HttpClient) { }
 
   //comunicação CRUD da API (get / post / put/ delete)

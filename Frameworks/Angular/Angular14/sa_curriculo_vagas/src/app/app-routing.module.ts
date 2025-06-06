@@ -4,12 +4,14 @@ import { InicioComponent } from './view/inicio/inicio.component';
 import { CurriculoComponent } from './view/curriculo/curriculo.component';
 import { VagasComponent } from './view/vagas/vagas.component';
 import { PainelVagasComponent } from './view/painel-vagas/painel-vagas.component';
+import { PainelCurriculosComponent } from './view/painel-curriculos/painel-curriculos.component';
 
 const routes: Routes = [
   {path: "", component: InicioComponent},
   {path: "curriculo", component: CurriculoComponent},
   {path: "vagas", component: VagasComponent},
-  {path: "painel-vagas", component: PainelVagasComponent}
+  {path: "painel-vagas", component: PainelVagasComponent},
+  {path: "painel-curriculos", component: PainelCurriculosComponent}
 ];
 
 @NgModule({
