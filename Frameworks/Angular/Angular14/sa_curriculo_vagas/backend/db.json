@@ -27,13 +27,6 @@
       "foto": "foto5.jpg",
       "descricao": "Trabalhar com HTML, CSS e JS",
       "salario": 4000
-    },
-    {
-      "id": "sadasd",
-      "nome": "dasdas",
-      "foto": "",
-      "descricao": "dasdas",
-      "salario": "0dasdas"
     }
   ],
   "curriculos": [
@@ -46,6 +39,16 @@
       "linkedin": "https://linkedin.com/in/joaosilva",
       "usuarioId": 1,
       "id": "1"
+    },
+    {
+      "id": "7c24",
+      "nome": "Teste",
+      "email": "teste@email.com",
+      "formacao": "",
+      "experiencia": "",
+      "habilidades": "",
+      "linkedin": "",
+      "usuarioId": 2
     }
   ]
 }

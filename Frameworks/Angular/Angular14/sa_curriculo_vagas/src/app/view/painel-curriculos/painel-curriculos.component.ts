@@ -1,48 +1,68 @@
-import { Component } from '@angular/core';
-
-interface Vaga {
-  id: number | null;
-  nome: string;
-  foto: string;
-  descricao: string;
-  salario: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { Curriculo } from 'src/app/models/curriculo.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-painel-curriculos',
   templateUrl: './painel-curriculos.component.html',
   styleUrls: ['./painel-curriculos.component.scss'],
 })
-export class PainelCurriculosComponent {
-  vaga: Vaga = this.criarVagaVazia();
-  vagas: Vaga[] = [];
+export class PainelCurriculosComponent implements OnInit {
+  curriculo: Curriculo = this.criarCurriculoVazio();
+  curriculos: Curriculo[] = [];
+  private apiUrl = 'http://localhost:3000/curriculos';
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.listarTodos();
+  }
+
+  listarTodos() {
+    this.http.get<Curriculo[]>(this.apiUrl).subscribe(data => {
+      this.curriculos = data;
+    });
+  }
 
   cadastrar() {
-    if (this.vaga.id !== null && this.vaga.nome.trim() !== '') {
-      this.vagas.push({ ...this.vaga });
-      this.vaga = this.criarVagaVazia();
+    if (this.curriculo.nome.trim() !== '' && this.curriculo.email.trim() !== '') {
+      this.http.post<Curriculo>(this.apiUrl, this.curriculo).subscribe(() => {
+        this.listarTodos();
+        this.curriculo = this.criarCurriculoVazio();
+      });
     }
   }
 
-  atualizar(id: number | null) {
-
+  atualizar(id: number | undefined) {
+    if (!id) return;
+    this.http.put<Curriculo>(`${this.apiUrl}/${id}`, this.curriculo).subscribe(() => {
+      this.listarTodos();
+      this.curriculo = this.criarCurriculoVazio();
+    });
   }
 
-  excluir(id: number | null) {
-    this.vagas = this.vagas.filter((v) => v.id !== id);
+  excluir(id: number | undefined) {
+    if (!id) return;
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe(() => {
+      this.listarTodos();
+      this.curriculo = this.criarCurriculoVazio();
+    });
   }
 
-  listarVagaUnica(vaga: Vaga) {
-
+  listarCurriculoUnico(curriculo: Curriculo) {
+    this.curriculo = { ...curriculo };
   }
 
-  private criarVagaVazia(): Vaga {
+  private criarCurriculoVazio(): Curriculo {
     return {
-      id: null,
+      id: undefined,
+      usuarioId: 0,
       nome: '',
-      foto: '',
-      descricao: '',
-      salario: '',
+      email: '',
+      formacao: '',
+      experiencia: '',
+      habilidades: '',
+      linkedin: ''
     };
   }
 }

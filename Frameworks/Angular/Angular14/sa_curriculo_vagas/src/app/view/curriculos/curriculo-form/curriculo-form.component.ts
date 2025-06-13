@@ -31,16 +31,16 @@ export class CurriculoFormComponent implements OnInit {
       linkedin: ['', Validators.required],
     });
 
+    // Se estiver editando, carrega os dados do currículo
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
         this.isEdit = true;
         this.curriculoId = +id;
-        this.curriculoService
-          .getCurriculoById(this.curriculoId)
-          .subscribe((curriculo) => {
-            this.curriculoForm.patchValue(curriculo);
-          });
+        this.curriculoService.getCurriculoById(this.curriculoId).subscribe({
+          next: (curriculo) => this.curriculoForm.patchValue(curriculo),
+          error: () => alert('Erro ao carregar currículo.'),
+        });
       }
     });
   }
@@ -48,7 +48,7 @@ export class CurriculoFormComponent implements OnInit {
   onSubmit(): void {
     if (this.curriculoForm.invalid) return;
 
-    const usuarioId = 1; // Simulação: pegue o id do usuário logado
+    const usuarioId = 1; // Simulação de ID do usuário
     const curriculo: Curriculo = {
       ...this.curriculoForm.value,
       usuarioId,
@@ -68,7 +68,7 @@ export class CurriculoFormComponent implements OnInit {
     }
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(['/meu-curriculo']);
   }
 }
