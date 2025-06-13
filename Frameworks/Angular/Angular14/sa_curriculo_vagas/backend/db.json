@@ -29,11 +29,23 @@
       "salario": 4000
     },
     {
-      "id": "1",
-      "nome": "Desenvolver FrontEnd Jr",
-      "foto": "foto1.jpg",
-      "descricao": "Trabalhar com HTML, CSS e JS",
-      "salario": 4000
+      "id": "sadasd",
+      "nome": "dasdas",
+      "foto": "",
+      "descricao": "dasdas",
+      "salario": "0dasdas"
+    }
+  ],
+  "curriculos": [
+    {
+      "nome": "João Cardoso",
+      "email": "joao@email.com",
+      "formacao": "Engenharia de Software",
+      "experiencia": "2 anos como desenvolvedor front-end",
+      "habilidades": "Angular, TypeScript, HTML, CSS",
+      "linkedin": "https://linkedin.com/in/joaosilva",
+      "usuarioId": 1,
+      "id": "1"
     }
   ]
 }

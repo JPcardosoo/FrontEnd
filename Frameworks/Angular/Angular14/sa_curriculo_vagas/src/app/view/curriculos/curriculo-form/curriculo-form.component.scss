@@ -1,0 +1,20 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-card {
+  max-width: 600px;
+  margin: 32px auto;
+  padding: 24px;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}

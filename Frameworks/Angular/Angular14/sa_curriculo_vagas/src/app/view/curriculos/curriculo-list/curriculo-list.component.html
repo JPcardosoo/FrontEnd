@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-title>Lista de Currículos</mat-card-title>
+  <mat-card-content>
+    <div *ngIf="isLoading">Carregando currículos...</div>
+    <div *ngIf="!isLoading && curriculos.length === 0">Nenhum currículo encontrado.</div>
+    <mat-list *ngIf="!isLoading && curriculos.length > 0">
+      <mat-list-item *ngFor="let curriculo of curriculos">
+        <div class="curriculo-info">
+          <strong>{{ curriculo.nome }}</strong> - {{ curriculo.formacao }}
+        </div>
+        <div class="actions">
+          <button mat-icon-button color="primary" (click)="visualizarDetalhes(curriculo.id!)" matTooltip="Ver detalhes">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="editarCurriculo(curriculo.id!)" matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="excluirCurriculo(curriculo.id!)" matTooltip="Excluir">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

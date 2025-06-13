@@ -1,0 +1,20 @@
+.curriculo-info {
+  flex: 1;
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+mat-card {
+  max-width: 700px;
+  margin: 32px auto;
+  padding: 24px;
+}
+
+mat-card-title {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}

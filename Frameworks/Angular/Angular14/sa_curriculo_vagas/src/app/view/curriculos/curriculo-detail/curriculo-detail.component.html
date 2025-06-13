@@ -1,0 +1,17 @@
+<mat-card *ngIf="!isLoading && curriculo">
+  <mat-card-title>Detalhes do Currículo</mat-card-title>
+  <mat-card-content>
+    <p><strong>Nome:</strong> {{ curriculo.nome }}</p>
+    <p><strong>Email:</strong> {{ curriculo.email }}</p>
+    <p><strong>Formação:</strong> {{ curriculo.formacao }}</p>
+    <p><strong>Experiência:</strong> {{ curriculo.experiencia }}</p>
+    <p><strong>Habilidades:</strong> {{ curriculo.habilidades }}</p>
+    <p><strong>LinkedIn:</strong> <a [href]="curriculo.linkedin" target="_blank">{{ curriculo.linkedin }}</a></p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="voltarParaLista()">Voltar</button>
+  </mat-card-actions>
+</mat-card>
+<div *ngIf="isLoading">
+  Carregando currículo...
+</div>

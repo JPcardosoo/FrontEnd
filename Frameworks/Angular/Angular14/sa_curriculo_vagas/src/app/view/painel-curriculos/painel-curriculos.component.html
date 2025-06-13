@@ -24,9 +24,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Código da Vaga</th>
-        <th>Vaga</th>
-        <th>Descrição da Vaga</th>
+        <th>Código do curriculo</th>
+        <th>Currículo</th>
+        <th>Descrição de curriculo</th>
         <th>Salário</th>
         <th>Ações</th>
       </tr>
@@ -34,7 +34,44 @@
     <tbody>
       <tr *ngFor="let vaga of vagas" class="vaga-row">
         <td>{{ vaga.id }}</td>
-        <td>{{ vaga.nome }}</td>
+        <td>{{ vaga.nome }}</td><div class="form-container">
+          <h2>Cadastrar Vaga</h2>
+          <form (ngSubmit)="cadastrar()" #form="ngForm">
+            <label for="id">ID:</label>
+            <input type="number" [(ngModel)]="vaga.id" name="id" required />
+
+            <label for="nome">Nome:</label>
+            <input type="text" [(ngModel)]="vaga.nome" name="nome" required />
+
+            <label for="foto">Foto (URL):</label>
+            <input type="text" [(ngModel)]="vaga.foto" name="foto" />
+
+            <label for="descricao">Descrição:</label>
+            <textarea [(ngModel)]="vaga.descricao" name="descricao"></textarea>
+
+            <label for="salario">Salário:</label>
+            <input type="text" [(ngModel)]="vaga.salario" name="salario" />
+
+            <button type="submit">Cadastrar</button>
+          </form>
+        </div>
+
+        <hr />
+
+        <div class="lista-vagas">
+          <h2>Curriculos Cadastrados</h2>
+          <div *ngIf="vagas.length === 0">Nenhum curriculo cadastrado.</div>
+          <ul>
+            <li *ngFor="let v of vagas">
+              <h3>{{ v.nome }} (ID: {{ v.id }})</h3>
+              <img *ngIf="v.foto" [src]="v.foto" alt="Foto da vaga" width="100" />
+              <p>{{ v.descricao }}</p>
+              <p><strong>Salário:</strong> {{ v.salario }}</p>
+              <button (click)="excluir(v.id)">Excluir</button>
+            </li>
+          </ul>
+        </div>
+
         <td>{{ vaga.descricao }}</td>
         <td>R$ {{ vaga.salario }},00</td>
         <td>

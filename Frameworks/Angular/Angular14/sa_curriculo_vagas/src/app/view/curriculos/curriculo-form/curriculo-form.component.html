@@ -1,0 +1,51 @@
+<form [formGroup]="curriculoForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-title>{{ isEdit ? 'Editar Currículo' : 'Novo Currículo' }}</mat-card-title>
+    <mat-card-content>
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Formação</mat-label>
+          <input matInput formControlName="formacao" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Experiência</mat-label>
+          <textarea matInput formControlName="experiencia" required></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Habilidades</mat-label>
+          <textarea matInput formControlName="habilidades" required></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>LinkedIn</mat-label>
+          <input matInput formControlName="linkedin" required>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="curriculoForm.invalid">
+        {{ isEdit ? 'Atualizar' : 'Cadastrar' }}
+      </button>
+      <button mat-button color="warn" type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
