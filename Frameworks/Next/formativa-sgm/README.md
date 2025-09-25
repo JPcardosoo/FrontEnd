@@ -52,7 +52,7 @@ O projeto consiste no desenvolvimento de um Sistema de Gestão de Manutenção (
 classDiagram
 
 class Usuario {
-    +String id
+    + String id
     + String nome
     + String email
     + String senha
@@ -73,17 +73,55 @@ class Equipamento{
 }
 
     class OrdemServico{
-        +String id
-        +String titulo
-        +String descricao
-        +String tipoManutencao
-        +String status
-        +String idTecnico
-        +String IdEquipamento
-        +CRUD()
+        + String id
+        + String titulo
+        + String descricao
+        + String tipoManutencao
+        + String status
+        + String idTecnico
+        + String IdEquipamento
+        + CRUD()
     }
 
     Usuario "1"--"1+" OrdemSrvico: "é Responsável por"
     Equipamento "1"--"1+" OrdemServico: "associada a"
 
+```
+
+2. ### Casos de Uso
+Ilustra as interações dos diferentes tipos de usuários (Atores) com as funcionalidade do sistema
+
+- Caso de Uso:
+    - Técnico: Gerenciar Ordens de Serviço (CRUD) e acessar o Dashboard
+    - Gerente: funções do técnico + Gerenciamento de Equipamentos (CRUD);
+    - Admin: Gerenciar Usúarios do Sistema, acessar o Dashboard
+
+    Fazer o login -> Antes de  qualquer Ação
+
+    ```mermaid
+
+graph TD
+
+    subgraph "SGM"
+        caso1([Fazer Login])
+        caso2([Gerenciar Ordens de Srviço - CRUD])
+        caso3([Gerenciar Equipamentos - CRUD])
+        caso4([Gerenciar Usuários])
+        caso5([Acessar o DashBoard])
+    end
+
+    Tecnico([Técnico de Manutenção])
+    Gerente([Gerente de Manutenção])
+    Admin([Administrador do Sistema])
+
+    Tecnico --> caso1
+    Tecnico --> caso3
+    Tecnico --> caso5
+
+    Gerente --> caso1
+    Gerente --> caso2
+    Gerente --> caso3
+    Gerente --> caso5
+
+    Admin --> caso1
 ```
